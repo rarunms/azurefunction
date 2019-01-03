@@ -26,7 +26,7 @@ namespace Company.Function
             name = name ?? data?.name;
 
             return name != null
-                ? (ActionResult)new OkObjectResult($"Hi, {name}")
+                ? (ActionResult)new OkObjectResult($"Hi, {name}, good day")
                 : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
         }
     }
