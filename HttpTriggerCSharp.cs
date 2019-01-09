@@ -12,9 +12,10 @@ namespace Company.Function
 {
     public static class HttpTriggerCSharp
     {
+
         [FunctionName("Greetings")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
@@ -23,6 +24,7 @@ namespace Company.Function
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
+            log.LogInformation("requestBody :" + requestBody);
             name = name ?? data?.name;
 
             return name != null
