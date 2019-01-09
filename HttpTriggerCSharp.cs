@@ -26,7 +26,7 @@ namespace Company.Function
             dynamic data = JsonConvert.DeserializeObject(requestBody);
 
             log.LogInformation("requestBody :" + requestBody);
-            name = name ?? data?.name;
+            name = name ?? data.name;
 
             return name != null
                 ? (ActionResult)new OkObjectResult($"Hi {name}, have a nice day")
